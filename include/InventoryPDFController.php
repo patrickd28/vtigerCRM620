@@ -196,7 +196,7 @@ class Vtiger_InventoryPDFController {
 			$discount = (($discount_percent*$final_details["hdnSubTotal"])/100);
 		}
 		//$summaryModel->set(getTranslatedString("Discount", $this->moduleName)."($discount_final_percent%)", $this->formatPrice($discount));
-
+        // TODO mettre chaque taxe séparéeent
 		$group_total_tax_percent = '0.00';
 		//To calculate the group tax amount
 		if($final_details['taxtype'] == 'group') {
@@ -215,7 +215,7 @@ class Vtiger_InventoryPDFController {
 		$currencySymbol = $this->buildCurrencySymbol();
 
 		$summaryModel->set(getTranslatedString("Shipping & Handling Charges", $this->moduleName), $this->formatPrice($final_details['shipping_handling_charge']));
-        // TODO mettre chaque taxe séparéeent
+
 		$summaryModel->set(getTranslatedString("Shipping & Handling Tax:", $this->moduleName)."($sh_tax_percent%)", $this->formatPrice($final_details['shtax_totalamount']));
 		$summaryModel->set(getTranslatedString("Adjustment", $this->moduleName), $this->formatPrice($final_details['adjustment']));
 		$summaryModel->set(getTranslatedString("Grand Total:", $this->moduleName)."(in $currencySymbol)", $this->formatPrice($final_details['grandTotal'])); // TODO add currency string

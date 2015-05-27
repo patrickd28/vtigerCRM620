@@ -10,6 +10,7 @@
  ********************************************************************************/
 include_once 'modules/Invoice/InvoicePDFController.php';
 global $currentModule;
+die($currentModule);
 
 $controller = new Vtiger_InvoicePDFController($currentModule);
 $controller->loadRecord(vtlib_purify($_REQUEST['record']));

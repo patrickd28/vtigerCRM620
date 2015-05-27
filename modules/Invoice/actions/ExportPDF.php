@@ -7,7 +7,7 @@
  * Portions created by vtiger are Copyright (C) vtiger.
  * All Rights Reserved.
  *************************************************************************************/
-
+echo('before - ');
 vimport('~~/modules/Invoice/InvoicePDFController.php');
 
 class Invoice_ExportPDF_Action extends Inventory_ExportPDF_Action {
