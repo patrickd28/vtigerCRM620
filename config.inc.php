@@ -87,7 +87,7 @@ $host_name = $dbconfig['db_hostname'];
 $site_URL = 'http://localhost:8989/';
 
 // root directory path
-$root_directory = 'C:/GitHub/vtigerCRM';
+$root_directory = __DIR__;
 
 // cache direcory path
 $cache_dir = 'cache/';
