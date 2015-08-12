@@ -373,6 +373,7 @@ class Users extends CRMEntity {
             default:
                 $this->log->debug("Using integrated/SQL authentication");
                 $query = "SELECT crypt_type, user_name FROM $this->table_name WHERE user_name=?";
+                $this->db->connect(true);
                 $result = $this->db->requirePsSingleResult($query, array($usr_name), false);
                 if (empty($result)) {
                     return false;

@@ -1,3 +1,19 @@
 .clearfix {
 	clear: both;
 }
+
+.navbar .nav > li > a {
+    font-size: 1.3em;
+}
+
+.moreMenus {
+    width: 75em!important;
+}
+
+.moreMenus .moduleNames a {
+    font-size: 1.1em!important;
+}
+
+.banner {
+    display:none;
+}

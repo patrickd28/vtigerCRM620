@@ -114,10 +114,10 @@
 								{/foreach}
 								{if $USER_MODEL->isAdminUser()}
 									<div class="row-fluid">
-										<a id="menubar_item_moduleManager" href="index.php?module=MenuEditor&parent=Settings&view=Index" class="pull-right">{vtranslate('LBL_CUSTOMIZE_MAIN_MENU',$MODULE)}</a>
+										<a id="menubar_item_moduleManager" href="index.php?module=MenuEditor&parent=Settings&view=Index" class="btn pull-right">{vtranslate('LBL_CUSTOMIZE_MAIN_MENU',$MODULE)}</a>
 									</div>
 									<div class="row-fluid">
-										<a id="menubar_item_moduleManager" href="index.php?module=ModuleManager&parent=Settings&view=List" class="pull-right">{vtranslate('LBL_ADD_MANAGE_MODULES',$MODULE)}</a>
+										<a id="menubar_item_moduleManager" href="index.php?module=ModuleManager&parent=Settings&view=List" class=" btn  pull-right">{vtranslate('LBL_ADD_MANAGE_MODULES',$MODULE)}</a>
 									</div>
 								{/if}
 							</div>

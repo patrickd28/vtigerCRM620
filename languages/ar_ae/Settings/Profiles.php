@@ -39,9 +39,9 @@ $languageStrings = array(
     
         'LBL_VIEW_ALL' => 'View All',
         'LBL_EDIT_ALL' => 'Edit All',
-        'LBL_VIEW_ALL_DESC' => 'Can view all the modules information',
-        'LBL_EDIT_ALL_DESC' => 'Can edit all the modules information',
-	'LBL_DUPLICATES_EXIST' => 'Duplicate Profile Exists',
+        'LBL_VIEW_ALL_DESC' => 'Peut voir tous les information dans les modules',
+        'LBL_EDIT_ALL_DESC' => 'Peut modifier tous les information dans les modules',
+	'LBL_DUPLICATES_EXIST' => 'Copier le Profil existant',
     
         'Import' => 'استيراد',
         'Export' => 'تصدير',

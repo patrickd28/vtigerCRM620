@@ -187,6 +187,8 @@ class Vtiger_InventoryPDFController {
 		$discount_amount = $final_details["discount_amount_final"];
 		$discount_percent = $final_details["discount_percentage_final"];
 
+        $brutTotal = $netTotal-$discount_amount;
+
 		$discount = 0.0;
         $discount_final_percent = '0.00';
 		if($final_details['discount_type_final'] == 'amount') {
@@ -195,16 +197,19 @@ class Vtiger_InventoryPDFController {
             $discount_final_percent = $discount_percent;
 			$discount = (($discount_percent*$final_details["hdnSubTotal"])/100);
 		}
-		//$summaryModel->set(getTranslatedString("Discount", $this->moduleName)."($discount_final_percent%)", $this->formatPrice($discount));
-        // TODO mettre chaque taxe séparéeent
+		$summaryModel->set(getTranslatedString("Discount", $this->moduleName)."($discount_final_percent%)", $this->formatPrice($discount));
 		$group_total_tax_percent = '0.00';
 		//To calculate the group tax amount
 		if($final_details['taxtype'] == 'group') {
 			$group_tax_details = $final_details['taxes'];
 			for($i=0;$i<count($group_tax_details);$i++) {
-				$group_total_tax_percent += $group_tax_details[$i]['percentage'];
-			}
-			$summaryModel->set(getTranslatedString("Tax:", $this->moduleName)."($group_total_tax_percent%)", $this->formatPrice($final_details['tax_totalamount']));
+                $percent_tax = $group_tax_details[$i]['percentage'];
+				$group_total_tax_percent += $percent_tax;
+                $summaryModel->set(getTranslatedString($group_tax_details[$i]['taxlabel'], $this->moduleName)." ($percent_tax%)", $this->formatPrice($percent_tax*$brutTotal/100));
+
+            }
+            // Deprecated
+			//$summaryModel->set(getTranslatedString("Tax:", $this->moduleName)."($group_total_tax_percent%)", $this->formatPrice($final_details['tax_totalamount']));
 		}
 		//Shipping & Handling taxes
 		$sh_tax_details = $final_details['sh_taxes'];
@@ -218,7 +223,7 @@ class Vtiger_InventoryPDFController {
 
 		$summaryModel->set(getTranslatedString("Shipping & Handling Tax:", $this->moduleName)."($sh_tax_percent%)", $this->formatPrice($final_details['shtax_totalamount']));
 		$summaryModel->set(getTranslatedString("Adjustment", $this->moduleName), $this->formatPrice($final_details['adjustment']));
-		$summaryModel->set(getTranslatedString("Grand Total:", $this->moduleName)."(in $currencySymbol)", $this->formatPrice($final_details['grandTotal'])); // TODO add currency string
+		$summaryModel->set(getTranslatedString("Grand Total:", $this->moduleName), $this->formatPrice($final_details['grandTotal']) . " " . $currencySymbol); // TODO add currency string
 
 		if ($this->moduleName == 'Invoice') {
 			$receivedVal = $this->focusColumnValue("received");

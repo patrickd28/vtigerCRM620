@@ -173,29 +173,23 @@
 		    </span>
 		</td>
 	    </tr>
-	    <tr>
-	    {if $FINAL_DETAILS.taxtype eq 'group'}
-		<tr>
-		    <td width="83%">
-			<span class="pull-right">
-			    {assign var=GROUP_TAX_INFO value="{vtranslate('LBL_TOTAL_AFTER_DISCOUNT',$MODULE_NAME)} = {$FINAL_DETAILS["totalAfterDiscount"]}\r\n{foreach item=tax_details from=$FINAL_DETAILS["taxes"]}{$tax_details["taxlabel"]} : {$tax_details["percentage"]} % = {$tax_details["amount"]}\r\n{/foreach}\r\n{vtranslate('LBL_TOTAL_TAX_AMOUNT',$MODULE_NAME)} = {$FINAL_DETAILS['tax_totalamount']}"}
-			    (+)&nbsp;<b><a class="inventoryLineItemDetails" href="javascript:void(0)" id="finalTax"
-					   data-info='{$GROUP_TAX_INFO}'>{vtranslate('LBL_TAX',$MODULE_NAME)}</a></b>
-			</span>
-		    </td>
-            <td>
-		    <span class="pull-right">
 
-            {foreach item=tax_details from=$FINAL_DETAILS["taxes"]}
-                {if   $tax_details["percentage"] > 0}
-                    {$tax_details["taxlabel"]} ({$tax_details["percentage"]} %) = {$tax_details["amount"]}
-                {/if}
-            {/foreach}
-		    </span>
-            </td>
-		</tr>
+	    {if $FINAL_DETAILS.taxtype eq 'group'}
+
+                    {foreach item=tax_details from=$FINAL_DETAILS["taxes"]}
+                        {if   $tax_details["percentage"] > 0}
+                        <tr>
+                            <th>
+                               <span class="pull-right">{$tax_details["taxlabel"]} ({$tax_details["percentage"]} %)</span>
+                            </th>
+                            <td>
+                                <span class="pull-right">{$tax_details["amount"]}</span>
+                            </td>
+                        </tr>
+                        {/if}
+                    {/foreach}
+
 	    {/if}
-        <!-- TODO put taxes on seperated lines -->
 		<td width="83%">
 		    <span class="pull-right">
 			{assign var=SHIPPING_HANDLING_TAX_INFO value="{vtranslate('LBL_SHIPPING_AND_HANDLING_CHARGES',$MODULE_NAME)} = {$FINAL_DETAILS["shipping_handling_charge"]}\r\n{foreach item=tax_details from=$FINAL_DETAILS["sh_taxes"]}{$tax_details["taxlabel"]} : {$tax_details["percentage"]} % = {$tax_details["amount"]}\r\n{/foreach}\r\n{vtranslate('LBL_TOTAL_TAX_AMOUNT',$MODULE_NAME)} = {$FINAL_DETAILS['shtax_totalamount']}"}

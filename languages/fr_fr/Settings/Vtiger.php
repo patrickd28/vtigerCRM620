@@ -182,13 +182,13 @@ $languageStrings = array(
 	'LBL_SHORT_SECONDS'            => 'sec'                         , // TODO: Review
 	
 	//User Login History
-	'LoginHistory' => 'User Login History',
-	'LBL_LOGIN_HISTORY_DETAILS' => 'Login History',
+	'LoginHistory' => 'Historique de connexion utilisateur',
+	'LBL_LOGIN_HISTORY_DETAILS' => 'Historique de connexion',
 	'LBL_LOGIN_HISTORY_DESCRIPTION' => 'Login History Details',
-	'LBL_USER_NAME'=> 'User Name',
-	'LBL_USER_IP_ADDRESS'=> 'User IP Address', 
-	'LBL_LOGIN_TIME' => 'Sign-in Time',
-	'LBL_LOGGED_OUT_TIME' => 'Sign-out Time', 
+	'LBL_USER_NAME'=> 'Nom utilisateur',
+	'LBL_USER_IP_ADDRESS'=> 'Adresse IP utilisateur',
+	'LBL_LOGIN_TIME' => 'Heure connecté',
+	'LBL_LOGGED_OUT_TIME' => 'Heure déconnecté',
 	'LBL_STATUS' => 'Status'
 );
 $jsLanguageStrings = array(
